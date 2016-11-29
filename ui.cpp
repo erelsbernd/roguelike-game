@@ -774,7 +774,7 @@ int UI::rangedCombat()
   
   if (att) {
     // attack
-      // net damage = total damage - total defense
+      // net damage = total ranged damage - total defense
       int dam = pc->getTotalDamRanged() - att->getTotalDef();
       
       if (dam < 0) dam = 0;
@@ -786,15 +786,16 @@ int UI::rangedCombat()
       } else {
         // kill successfully
         att->hp = 0;
+        att->setDead();
+        dungeon->cmap[npcy][npcx] = NULL;
       }
       UI::printHP();
     }
   
   
-  //pc->mp -= cost;
-  //pc->setLocation(pcx, pcy); // force update seen dungeon
+  
   dungeon->printDungeon();
-  UI::printMP();
+  printMP();
   refresh();
   return 0;
 }

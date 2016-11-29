@@ -1,0 +1,514 @@
+===============
+     DEBUG     
+===============
+
+seed: 1480393275
+save path: (null)
+load path: (null)
+
+generating new dungeon...
+
+error parsing COLOR BLACK RED MAGENTA
+error parsing COLOR RED MAGENTA
+error parsing COLOR GREEN BLUE
+error parsing COLOR GREEN WHITE CYAN MAGENTA RED YELLOW BLUE
+generating monsters...
+
+place NPC p
+place NPC p
+place NPC p
+place NPC z
+place NPC C
+place NPC C
+place NPC p
+place NPC z
+place NPC z
+place NPC p
+
+monsters generated.
+
+generating objects...
+
+place item _
+place item _
+place item }
+place item \
+place item (
+place item }
+place item =
+place item =
+place item }
+place item _
+
+objects generated.
+
+move @ to (19, 12)
+
+move @ to (19, 13)
+
+move @ to (19, 14)
+
+move @ to (20, 14)
+
+move @ to (20, 15)
+
+move @ to (20, 16)
+
+move @ to (20, 17)
+
+move @ to (21, 17)
+
+move @ to (21, 16)
+
+move @ to (22, 16)
+
+move @ to (22, 16)
+
+move @ to (22, 16)
+
+move @ to (23, 16)
+
+move @ to (24, 16)
+
+move @ to (25, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (26, 16)
+
+move @ to (78, 6)
+
+move @ to (78, 5)
+
+move @ to (78, 4)
+
+move @ to (77, 4)
+
+move @ to (76, 4)
+
+move @ to (75, 4)
+
+move @ to (74, 4)
+
+move @ to (73, 4)
+
+move @ to (73, 5)
+
+move @ to (73, 6)
+
+move @ to (73, 7)
+
+move @ to (73, 8)
+
+move @ to (73, 9)
+
+move @ to (73, 10)
+
+move @ to (73, 11)
+
+move @ to (73, 12)
+
+move @ to (73, 13)
+
+move @ to (73, 14)
+
+move @ to (73, 15)
+
+move @ to (73, 16)
+
+move @ to (73, 17)
+
+move @ to (72, 17)
+
+move @ to (72, 17)
+
+move @ to (72, 17)
+
+move @ to (73, 18)
+
+move @ to (74, 18)
+
+move @ to (75, 18)
+
+move @ to (75, 17)
+
+move @ to (75, 16)
+
+move @ to (75, 15)
+
+move @ to (75, 14)
+
+move @ to (74, 14)
+
+move @ to (73, 14)
+
+move @ to (72, 14)
+
+move @ to (71, 14)
+
+move @ to (70, 14)
+
+move @ to (69, 14)
+
+move @ to (68, 14)
+
+move @ to (67, 14)
+
+move @ to (66, 14)
+
+move @ to (65, 14)
+
+move @ to (64, 14)
+
+move @ to (63, 14)
+
+move @ to (62, 14)
+
+move @ to (62, 15)
+
+move @ to (62, 16)
+
+move @ to (62, 16)
+
+move @ to (62, 16)
+
+move @ to (62, 16)
+
+move @ to (62, 16)
+
+move @ to (62, 16)
+
+move @ to (63, 15)
+
+move @ to (64, 15)
+
+move @ to (65, 15)
+
+move @ to (66, 15)
+
+move @ to (67, 15)
+
+move @ to (68, 15)
+
+move @ to (69, 15)
+
+move @ to (70, 15)
+
+move @ to (71, 15)
+
+move @ to (72, 15)
+
+move @ to (73, 15)
+
+move @ to (74, 15)
+
+move @ to (75, 15)
+
+move @ to (76, 15)
+
+move @ to (75, 15)
+
+move @ to (74, 15)
+
+move @ to (73, 15)
+
+move @ to (72, 15)
+
+move @ to (71, 15)
+
+move @ to (70, 15)
+
+move @ to (69, 15)
+
+move @ to (68, 15)
+
+move @ to (68, 16)
+
+move @ to (67, 16)
+
+move @ to (66, 16)
+
+move @ to (65, 16)
+
+move @ to (64, 16)
+
+move @ to (63, 16)
+
+move @ to (62, 16)
+
+move @ to (61, 16)
+
+move @ to (60, 16)
+
+move @ to (59, 16)
+
+move @ to (58, 16)
+
+move @ to (57, 16)
+
+move @ to (57, 15)
+
+move @ to (57, 14)
+
+move @ to (57, 13)
+
+move @ to (57, 12)
+
+move @ to (57, 11)
+
+move @ to (58, 11)
+
+move @ to (59, 11)
+
+move @ to (60, 11)
+
+move @ to (60, 10)
+
+move @ to (60, 11)
+
+move @ to (59, 10)
+
+move @ to (58, 10)
+
+move @ to (57, 10)
+
+move @ to (56, 10)
+
+move @ to (56, 11)
+
+move @ to (56, 12)
+
+move @ to (56, 13)
+
+move @ to (56, 14)
+
+move @ to (56, 15)
+
+move @ to (56, 16)
+
+move @ to (55, 16)
+
+move @ to (54, 16)
+
+move @ to (53, 16)
+
+move @ to (52, 16)
+
+move @ to (51, 16)
+
+move @ to (50, 16)
+
+move @ to (49, 16)
+
+move @ to (48, 16)
+
+move @ to (49, 16)
+
+move @ to (48, 15)
+
+move @ to (49, 15)
+
+move @ to (50, 15)
+
+move @ to (51, 15)
+
+move @ to (52, 15)
+
+move @ to (53, 15)
+
