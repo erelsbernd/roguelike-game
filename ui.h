@@ -22,7 +22,11 @@ class UI
 
 		static int clearRow(int row);
 		static int reprint();
-		
+  
+  
+    //ranged combat
+		static int rangedCombat();
+  
 		static int eList();
 		static int iList();
 		static int mList();

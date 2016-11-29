@@ -652,6 +652,9 @@ int UI::iList()
 				reprint();
 				iListSelect(select);
 				break;
+      case 'R':
+      case 'r':
+        rangedCombat();
 			default:
 				if (pc->inventory->slots.empty())
 					//	quit = 1;
@@ -750,6 +753,44 @@ int UI::oList()
 
 	return 0;
 }
+
+/** ranged combat list */
+int UI::rangedCombat()
+{
+  int npcx, npcy;
+  int target = selectTarget();
+  NPC *att;
+  if (target < 0)
+				return 0;
+  
+  //get npc from vector of npcs
+  att = dungeon->vnpcv[target];
+  
+  //get location of target npc
+  att->getLocation(&npcx, &npcy);
+  
+  // frozen ball spell
+  for (int r=npcy-1; r<=npcy+1; r++) {
+				for (int c=npcx-1; c<=npcx+1; c++) {
+          if (r>=0 && r<21 &&
+              c>=0 && c<80 &&
+              dungeon->hmap[r][c]!=IMMUTABLE) {
+            if (dungeon->cmap[r][c]&&!
+                dungeon->cmap[r][c]->isPC()) {
+              dungeon->cmap[r][c]->frozen = 25;
+            }
+          }
+        }
+  }
+  //pc->mp -= cost;
+  pc->setLocation(pcx, pcy); // force update seen dungeon
+  dungeon->printDungeon();
+  UI::printMP();
+  refresh();
+  return 0;
+}
+
+
 
 int UI::sList()
 {
