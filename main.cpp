@@ -320,6 +320,10 @@ int main(int argc, char** argv)
 			case 'o':
 					  UI::oList(); noturn = 1;
 					  break;
+      case 'R':
+      case 'r':
+          UI::rangedCombat();
+          break;
 			case 'S':
 			case 's':
 					  quit = 1;

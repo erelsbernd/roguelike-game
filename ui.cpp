@@ -652,9 +652,6 @@ int UI::iList()
 				reprint();
 				iListSelect(select);
 				break;
-      case 'R':
-      case 'r':
-        rangedCombat();
 			default:
 				if (pc->inventory->slots.empty())
 					//	quit = 1;
@@ -757,6 +754,9 @@ int UI::oList()
 /** ranged combat list */
 int UI::rangedCombat()
 {
+  if (pc->equipment->slots[2] == NULL) {
+    return 0;
+  }
   int npcx, npcy;
   int target = selectTarget();
   NPC *att;
@@ -769,21 +769,30 @@ int UI::rangedCombat()
   //get location of target npc
   att->getLocation(&npcx, &npcy);
   
-  // frozen ball spell
-  for (int r=npcy-1; r<=npcy+1; r++) {
-				for (int c=npcx-1; c<=npcx+1; c++) {
-          if (r>=0 && r<21 &&
-              c>=0 && c<80 &&
-              dungeon->hmap[r][c]!=IMMUTABLE) {
-            if (dungeon->cmap[r][c]&&!
-                dungeon->cmap[r][c]->isPC()) {
-              dungeon->cmap[r][c]->frozen = 25;
-            }
-          }
-        }
-  }
+  // update what PC attacking
+  pc->attacking = att;
+  
+  if (att) {
+    // attack
+      // net damage = total damage - total defense
+      int dam = pc->getTotalDamRanged() - att->getTotalDef();
+      
+      if (dam < 0) dam = 0;
+      
+      if (att->hp > dam) {
+        // failed to kill
+        att->hp -= dam;
+        return 0;
+      } else {
+        // kill successfully
+        att->hp = 0;
+      }
+      UI::printHP();
+    }
+  
+  
   //pc->mp -= cost;
-  pc->setLocation(pcx, pcy); // force update seen dungeon
+  //pc->setLocation(pcx, pcy); // force update seen dungeon
   dungeon->printDungeon();
   UI::printMP();
   refresh();
