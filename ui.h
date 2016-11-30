@@ -28,7 +28,8 @@ class UI
   
     //ranged combat
 		static int rangedCombat();
-    static int cellDescriptions();
+    static int cellDescriptionMonsters();
+    static int cellDescriptionItems();
   
   
 		static int eList();
@@ -47,7 +48,8 @@ class UI
 		static int printMonsterHP(NPC *);
 
 		static int selectTarget();
-    static int selectTargetItemsMonsters();
+    static int selectTargetMonsters();
+    static int selectTargetItems();
 };
 
 #endif

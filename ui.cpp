@@ -783,13 +783,38 @@ int UI::oList()
 	return 0;
 }
 
-
-/** get description of all monsters and items in room */
-int UI::cellDescriptions()
+/** get description of selected item in room */
+int UI::cellDescriptionItems()
 {
   
   int npcx, npcy;
-  int target = selectTargetItemsMonsters();
+  int target = selectTargetMonsters();
+  NPC *att;
+  if (target < 0)
+				return 0;
+  
+  //get npc from vector of npcs
+  att = dungeon->vnpcv[target];
+  
+  //get location of target npc
+  att->getLocation(&npcx, &npcy);
+  
+  
+  
+  dungeon->printDungeon();
+  printMP();
+  UI::printHP();
+  refresh();
+  return 0;
+}
+
+
+/** get description of selected monster in room */
+int UI::cellDescriptionMonsters()
+{
+  
+  int npcx, npcy;
+  int target = selectTargetMonsters();
   NPC *att;
   if (target < 0)
 				return 0;
@@ -997,7 +1022,7 @@ int UI::sList()
 	return 0;
 }
 
-int UI::selectTargetItemsMonsters()
+int UI::selectTargetMonsters()
 {
   //if there are no items or monsters in the dungeon do nothing
   if (dungeon->vnpcv.empty() && dungeon->itemv.empty())

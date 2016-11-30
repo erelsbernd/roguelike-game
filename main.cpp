@@ -337,7 +337,7 @@ int main(int argc, char** argv)
 					  UI::sList();
 					  break;
       case 'z':
-            UI::cellDescriptions();
+            UI::cellDescriptionMonsters();
             break;
 			default:
 					  noturn = 1;
