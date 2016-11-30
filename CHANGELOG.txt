@@ -1,0 +1,19 @@
+(2016-11-29) ADD: copied over hw-9 files
+(2016-11-29) ADD: added .gitignore, changelog, and readme
+(2016-11-29) ADD: started rangedCombat()
+(2016-11-29) DEBUG: fixed check to see if pc has a ranged weapon
+(2016-11-29) ADD: select target monster
+(2016-11-29) DEBUG: fixed set monster to dead and position to null if killed
+
+
+
+
+(2016-11-29) ADD: made private variables public
+(2016-11-29) ADD: started MonsterFactory generateRandNPC method
+(2016-11-29) DEBUG: fixed how I set the icolor
+(2016-11-29) ADD: called functions from dungeon.c
+(2016-11-29) BUG: fixed object placing by creating new function
+(2016-11-0) ADD: create placeObject function
+(2016-11-08) BUG: segfault
+(2016-11-08) ADD: fixed deallocation
+(2016-11-08) ADD: added in color rendering

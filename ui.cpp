@@ -751,6 +751,54 @@ int UI::oList()
 	return 0;
 }
 
+
+/** get description of all monsters and items in room */
+int UI::cellDescriptions()
+{
+  
+  int npcx, npcy;
+  int target = selectTarget();
+  NPC *att;
+  if (target < 0)
+				return 0;
+  
+  //get npc from vector of npcs
+  att = dungeon->vnpcv[target];
+  
+  //get location of target npc
+  att->getLocation(&npcx, &npcy);
+  
+  // update what PC attacking
+  pc->attacking = att;
+  
+  if (att) {
+    // attack
+    // net damage = total ranged damage - total defense
+    int dam = pc->getTotalDamRanged() - att->getTotalDef();
+    
+    if (dam < 0) dam = 0;
+    
+    if (att->hp > dam) {
+      // failed to kill
+      att->hp -= dam;
+      return 0;
+    } else {
+      // kill successfully
+      att->hp = 0;
+      att->setDead();
+      dungeon->cmap[npcy][npcx] = NULL;
+    }
+    UI::printHP();
+  }
+  
+  
+  
+  dungeon->printDungeon();
+  printMP();
+  refresh();
+  return 0;
+}
+
 /** ranged combat list */
 int UI::rangedCombat()
 {
@@ -937,6 +985,80 @@ int UI::sList()
 	}
 
 	return 0;
+}
+
+int UI::selectTargetItemsMonsters()
+{
+  //if there are no items or monsters in the dungeon do nothing
+  if (dungeon->vnpcv.empty() && dungeon->itemv.empty())
+    return -1;
+  
+  int index = 0;
+  
+  selectNPC(dungeon->vnpcv[index]);
+  
+  while (1) {
+    bool quit = false;
+    
+    int ch = getch();
+    
+    switch (ch) {
+      case 'Q':
+      case 'q':
+        quit = true;
+        break;
+      case ' ':
+        pc->attacking = dungeon->vnpcv[index];
+        return index;
+      case KEY_DOWN:
+      case KEY_RIGHT:
+      case 'R':
+      case 'r':
+      case 'F':
+      case 'f':
+      case 'P':
+      case 'p':
+        index = (index + 1)
+        % (int)dungeon->vnpcv.size();
+        selectNPC(dungeon->vnpcv[index]);
+        break;
+      case KEY_UP:
+      case KEY_LEFT:
+        index = (index - 1 + (int)dungeon->vnpcv.size())
+        % (int)dungeon->vnpcv.size();
+        selectNPC(dungeon->vnpcv[index]);
+        break;
+      default:
+        break;
+    }
+    
+    if (quit)
+      break;
+  }
+  reprint();
+  
+  return -1;
+}
+
+
+int UI::selectItem(Item* i)
+{
+  reprint();
+  
+  // mvprintw(1, 20, "  select target ");
+  
+  int x, y;
+  
+  npc->getLocation(&x, &y);
+  
+  mvprintw(y+1, x-1, "[");
+  mvprintw(y+1, x+1, "]");
+  
+  printMonsterHP(npc);
+  
+  refresh();
+  
+  return 0;
 }
 
 int UI::selectNPC(NPC *npc)

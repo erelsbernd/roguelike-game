@@ -13,6 +13,7 @@ class UI
 		static int printEquipmentSlots();
 
 		static int selectNPC(NPC *);
+    static int selectItem(Item* i);
 		
 	public:
 		static int initColors();
@@ -26,6 +27,8 @@ class UI
   
     //ranged combat
 		static int rangedCombat();
+    static int cellDescriptions();
+  
   
 		static int eList();
 		static int iList();
@@ -43,6 +46,7 @@ class UI
 		static int printMonsterHP(NPC *);
 
 		static int selectTarget();
+    static int selectTargetItemsMonsters();
 };
 
 #endif
