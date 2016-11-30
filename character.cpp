@@ -3,7 +3,6 @@
 
 #include "character.h"
 #include "debug.h"
-#include "npc.h"
 #include "pc.h"
 
 Character::Character()
@@ -53,5 +52,13 @@ int Character::getColor()
 	if (poison)
 		return COLOR_POISON;
 	return color;
+}
+
+int Character::getMonsterMinDam() {
+  return this->dam->min();
+}
+
+int Character::getMonsterMaxDam() {
+  return this->dam->max();
 }
 

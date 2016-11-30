@@ -9,6 +9,7 @@ class UI
 
 		static int eListSelect(int);
 		static int iListSelect(int);
+    static int iListSelectForDescription(int select);
 
 		static int printEquipmentSlots();
 

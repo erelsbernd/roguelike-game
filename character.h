@@ -35,6 +35,9 @@ class Character
 	public:
 		Character();
 		virtual ~Character();
+  
+    int getMonsterMinDam();
+    int getMonsterMaxDam();
 		
 		// getters and setters for (x, y)
 		Point getLocation();

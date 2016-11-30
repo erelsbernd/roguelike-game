@@ -4,6 +4,7 @@
 #include "character.h"
 #include "equipment.h"
 #include "inventory.h"
+#include "npc.h"
 
 class PC : public Character
 {

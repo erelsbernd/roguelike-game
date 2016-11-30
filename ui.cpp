@@ -186,6 +186,38 @@ int UI::eListSelect(int select)
 	return select;
 }
 
+int UI::iListSelectForDescription(int select)
+{
+  dungeon->printDungeon();
+  
+    int color = COLOR_GREEN;
+    attron(COLOR_PAIR(color));
+    
+    mvprintw(0, 20, "  Press any key to return to dungeon ");
+    NPC* mon = dungeon->vnpcv[select];
+    int s = 1;
+    
+    mvprintw(s+2, 0, "%s ", mon->name.c_str());
+    mvprintw(s+3, 0, "%s ", mon->desc.c_str());
+    attroff(COLOR_PAIR(color));
+  
+    attron(COLOR_PAIR(color));
+
+      mvprintw(s+8, 0, " dam = %d-%d ",
+               mon->getMonsterMinDam(), mon->getMonsterMaxDam());
+      mvprintw(s+9, 0, " speed = %d ", mon->getSpeed());
+      mvprintw(s+10, 0, "  abil = %d ", mon->getAbil());
+  
+    attroff(COLOR_PAIR(color));
+  
+  getch();
+  
+  
+  
+  return select;
+}
+
+
 int UI::iListSelect(int select)
 {
 	dungeon->printDungeon();
@@ -757,7 +789,7 @@ int UI::cellDescriptions()
 {
   
   int npcx, npcy;
-  int target = selectTarget();
+  int target = selectTargetItemsMonsters();
   NPC *att;
   if (target < 0)
 				return 0;
@@ -768,33 +800,11 @@ int UI::cellDescriptions()
   //get location of target npc
   att->getLocation(&npcx, &npcy);
   
-  // update what PC attacking
-  pc->attacking = att;
-  
-  if (att) {
-    // attack
-    // net damage = total ranged damage - total defense
-    int dam = pc->getTotalDamRanged() - att->getTotalDef();
-    
-    if (dam < 0) dam = 0;
-    
-    if (att->hp > dam) {
-      // failed to kill
-      att->hp -= dam;
-      return 0;
-    } else {
-      // kill successfully
-      att->hp = 0;
-      att->setDead();
-      dungeon->cmap[npcy][npcx] = NULL;
-    }
-    UI::printHP();
-  }
-  
   
   
   dungeon->printDungeon();
   printMP();
+  UI::printHP();
   refresh();
   return 0;
 }
@@ -995,6 +1005,7 @@ int UI::selectTargetItemsMonsters()
   
   int index = 0;
   
+  //first go through monsters
   selectNPC(dungeon->vnpcv[index]);
   
   while (1) {
@@ -1008,7 +1019,7 @@ int UI::selectTargetItemsMonsters()
         quit = true;
         break;
       case ' ':
-        pc->attacking = dungeon->vnpcv[index];
+        iListSelectForDescription(index);
         return index;
       case KEY_DOWN:
       case KEY_RIGHT:
@@ -1041,14 +1052,14 @@ int UI::selectTargetItemsMonsters()
 }
 
 
-int UI::selectItem(Item* i)
+/**int UI::selectItem(Item* i)
 {
   reprint();
   
   // mvprintw(1, 20, "  select target ");
   
   int x, y;
-  
+
   npc->getLocation(&x, &y);
   
   mvprintw(y+1, x-1, "[");
@@ -1059,7 +1070,7 @@ int UI::selectItem(Item* i)
   refresh();
   
   return 0;
-}
+}*/
 
 int UI::selectNPC(NPC *npc)
 {
