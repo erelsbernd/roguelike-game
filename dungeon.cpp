@@ -143,6 +143,7 @@ int Dungeon::placeItem(Item *item)
 
 		if (!hmap[r][c]) {
 			placeItem(item, c, r);
+      item->setLocation(c, r);
 			break;
 		}
 	}
@@ -153,6 +154,7 @@ int Dungeon::placeItem(Item *item, int x, int y)
 {
 	item->next = imap[y][x];
 	imap[y][x] = item;
+  item->setLocation(y, x);
 	
 	itemv.push_back(item);
 	
@@ -162,6 +164,7 @@ int Dungeon::placeItem(Item *item, int x, int y)
 int Dungeon::eraseItem(int x, int y)
 {
 	Item *item = imap[y][x];
+  item->setLocation(-1, -1);
 	imap[y][x] = item->next;
 
 	int index = -1;

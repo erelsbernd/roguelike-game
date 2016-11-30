@@ -10,7 +10,10 @@ using namespace std;
 
 class Item
 {
-	public:
+  protected:
+    int x, y;
+
+  public:
 		Item(
 				string &name,
 				string &desc,
@@ -40,14 +43,19 @@ class Item
 		int speed;
 		int attr;
 		int val;
+    
 
 		// symbol determined from type
 		char symb;
 
 		Item *next; // for stacked item
-
+  
+    void getLocation(int *x, int *y);
+    void setLocation(int x, int y);
+  
 		inline char getSymb() { return next==NULL ? symb:'&'; }
 		inline bool isEquipment() { return type <= 10; }
+  
 };
 
 #endif

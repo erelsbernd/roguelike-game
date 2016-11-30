@@ -39,3 +39,15 @@ Item::~Item()
 {
 }
 
+void Item::getLocation(int *x, int *y)
+{
+  *x = this->x;
+  *y = this->y;
+}
+
+void Item::setLocation(int x, int y)
+{
+  this->x = x;
+  this->y = y;
+}
+

@@ -788,7 +788,7 @@ int UI::cellDescriptionItems()
 {
   
   int npcx, npcy;
-  int target = selectTargetMonsters();
+  int target = selectTargetItems();
   NPC *att;
   if (target < 0)
 				return 0;
@@ -1022,10 +1022,65 @@ int UI::sList()
 	return 0;
 }
 
+
+int UI::selectTargetItems()
+{
+  //if there are no items or monsters in the dungeon do nothing
+  if (dungeon->itemv.empty())
+    return -1;
+  
+  int index = 0;
+  
+  //first go through monsters
+  selectNPC(dungeon->vnpcv[index]);
+  
+  while (1) {
+    bool quit = false;
+    
+    int ch = getch();
+    
+    switch (ch) {
+      case 'Q':
+      case 'q':
+        quit = true;
+        break;
+      case ' ':
+        iListSelectForDescription(index);
+        return index;
+      case KEY_DOWN:
+      case KEY_RIGHT:
+      case 'R':
+      case 'r':
+      case 'F':
+      case 'f':
+      case 'P':
+      case 'p':
+        index = (index + 1)
+        % (int)dungeon->vnpcv.size();
+        selectNPC(dungeon->vnpcv[index]);
+        break;
+      case KEY_UP:
+      case KEY_LEFT:
+        index = (index - 1 + (int)dungeon->vnpcv.size())
+        % (int)dungeon->vnpcv.size();
+        selectNPC(dungeon->vnpcv[index]);
+        break;
+      default:
+        break;
+    }
+    
+    if (quit)
+      break;
+  }
+  reprint();
+  
+  return -1;
+}
+
 int UI::selectTargetMonsters()
 {
   //if there are no items or monsters in the dungeon do nothing
-  if (dungeon->vnpcv.empty() && dungeon->itemv.empty())
+  if (dungeon->vnpcv.empty())
     return -1;
   
   int index = 0;
@@ -1077,31 +1132,32 @@ int UI::selectTargetMonsters()
 }
 
 
-/**int UI::selectItem(Item* i)
+int UI::selectItem(Item* i)
 {
   reprint();
   
-  // mvprintw(1, 20, "  select target ");
+   mvprintw(1, 20, "  select item ");
   
   int x, y;
+  
 
-  npc->getLocation(&x, &y);
+  //npc->getLocation(&x, &y);
   
   mvprintw(y+1, x-1, "[");
   mvprintw(y+1, x+1, "]");
   
-  printMonsterHP(npc);
+ // printMonsterHP(npc);
   
   refresh();
   
   return 0;
-}*/
+}
 
 int UI::selectNPC(NPC *npc)
 {
 	reprint();
 
-	// mvprintw(1, 20, "  select target ");
+	// mvprintw(1, 20, "  select monster ");
 
 	int x, y;
 	npc->getLocation(&x, &y);
