@@ -9,6 +9,7 @@ class UI
 
 		static int eListSelect(int);
 		static int iListSelect(int);
+    static int mListSelectForDescription(int select);
     static int iListSelectForDescription(int select);
 
 		static int printEquipmentSlots();
@@ -49,7 +50,7 @@ class UI
 
 		static int selectTarget();
     static int selectTargetMonsters();
-    static int selectTargetItems();
+    static int selectTargetItems(vector<Item *>  &itemsInRoom);
 };
 
 #endif

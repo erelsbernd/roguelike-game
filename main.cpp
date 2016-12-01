@@ -202,7 +202,7 @@ int main(int argc, char** argv)
 			sprintf(buffer,"%02d MONSTERS LEFT !!",
 					dungeon->nummon());
 
-			mvprintw(22, 20, " A: AI C: Cast Spell");
+			mvprintw(22, 20, " A: AI C: Spell R: Ranged Combat");
 		}
 
 		mvprintw(22, 1, "%s", buffer);
@@ -303,8 +303,6 @@ int main(int argc, char** argv)
 				break;
 			case 'I': UI::setInspect(true);
 			case 'i':
-			case 'D': 
-			case 'd':
 			case 'W': 
 			case 'w':
 			case 'X': 
@@ -339,6 +337,9 @@ int main(int argc, char** argv)
       case 'z':
             UI::cellDescriptionMonsters();
             break;
+      case 'D':
+      case 'd':
+        UI::cellDescriptionItems();
 			default:
 					  noturn = 1;
 					  break;

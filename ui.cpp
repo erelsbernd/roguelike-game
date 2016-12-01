@@ -186,7 +186,7 @@ int UI::eListSelect(int select)
 	return select;
 }
 
-int UI::iListSelectForDescription(int select)
+int UI::mListSelectForDescription(int select)
 {
   dungeon->printDungeon();
   
@@ -203,12 +203,45 @@ int UI::iListSelectForDescription(int select)
   
     attron(COLOR_PAIR(color));
 
-      mvprintw(s+8, 0, " dam = %d-%d ",
+      mvprintw(s+8, 0, "   dam = %d-%d ",
                mon->getMonsterMinDam(), mon->getMonsterMaxDam());
       mvprintw(s+9, 0, " speed = %d ", mon->getSpeed());
       mvprintw(s+10, 0, "  abil = %d ", mon->getAbil());
   
     attroff(COLOR_PAIR(color));
+  
+  getch();
+  
+  
+  
+  return select;
+}
+
+int UI::iListSelectForDescription(int select)
+{
+  dungeon->printDungeon();
+  
+  int color = COLOR_GREEN;
+  attron(COLOR_PAIR(color));
+  
+  mvprintw(0, 20, "  Press any key to return to dungeon ");
+  Item* i = dungeon->itemv[select];
+  int s = 1;
+  
+  mvprintw(s+2, 0, "%s ", i->name.c_str());
+  mvprintw(s+3, 0, "%s ", i->desc.c_str());
+  attroff(COLOR_PAIR(color));
+  
+  mvprintw(s+9, 0, "   hit = %d ", i->hit);
+  mvprintw(s+10, 0, "   dam = %d-%d ",
+           i->dam->min(), i->dam->max());
+  mvprintw(s+11, 0, " dodge = %d ", i->dodge);
+  mvprintw(s+12, 0, "   def = %d ", i->def);
+  mvprintw(s+13, 0, " speed = %d ", i->speed);
+  mvprintw(s+14, 0, "  attr = %d ", i-> attr);
+  mvprintw(s+15, 0, "   val = %d ", i->  val);
+  
+  attroff(COLOR_PAIR(color));
   
   getch();
   
@@ -786,20 +819,25 @@ int UI::oList()
 /** get description of selected item in room */
 int UI::cellDescriptionItems()
 {
+  //mvprintw(21, 2, " In cellDescriptionItems");
+  //getch();
+  int x, y;
+  //mvprintw(20, 2, "Calling selectTargetItems");
+  //getch();
+  vector<Item *> itemsInRoom;
+  int target = selectTargetItems(itemsInRoom);
+  //mvprintw(19, 2, "selectTargetItems called");
+  //getch();
   
-  int npcx, npcy;
-  int target = selectTargetItems();
-  NPC *att;
+  Item *i;
   if (target < 0)
 				return 0;
   
   //get npc from vector of npcs
-  att = dungeon->vnpcv[target];
+  i = itemsInRoom[target];
   
   //get location of target npc
-  att->getLocation(&npcx, &npcy);
-  
-  
+  i->getLocation(&x, &y);
   
   dungeon->printDungeon();
   printMP();
@@ -1023,16 +1061,43 @@ int UI::sList()
 }
 
 
-int UI::selectTargetItems()
+int UI::selectTargetItems(vector<Item *>  &itemsInRoom)
 {
-  //if there are no items or monsters in the dungeon do nothing
+  //if there are no items in the dungeon do nothing
   if (dungeon->itemv.empty())
     return -1;
   
   int index = 0;
+  int roomIndex = 0;
   
-  //first go through monsters
-  selectNPC(dungeon->vnpcv[index]);
+  int i = 0;
+  
+  //mvprintw(18, 2, "entering for loop to get the room pc is in");
+  //getch();
+  //get the room the pc is in
+  for (i = 0; i < dungeon->roomv.size(); i++) {
+    if (dungeon->roomv[i]->contains(pc->getX(), pc->getY())) {
+      roomIndex = i;
+      break;
+    }
+  }
+  
+  Room* r = dungeon->roomv[roomIndex];
+  int x, y = 0;
+  
+  //mvprintw(17, 2, "entering for loop to get items in same room");
+  //getch();
+  //get the items in the same room as pc
+  for (i = 0; i < dungeon->itemv.size(); i++) {
+    dungeon->itemv[i]->getLocation(&x, &y);
+    if (r->contains(x, y)) {
+      itemsInRoom.push_back(dungeon->itemv[i]);
+    }
+  }
+  
+  
+  //first go through items
+  selectItem(itemsInRoom[index]);
   
   while (1) {
     bool quit = false;
@@ -1056,14 +1121,14 @@ int UI::selectTargetItems()
       case 'P':
       case 'p':
         index = (index + 1)
-        % (int)dungeon->vnpcv.size();
-        selectNPC(dungeon->vnpcv[index]);
+        % (int)itemsInRoom.size();
+        selectItem(itemsInRoom[index]);
         break;
       case KEY_UP:
       case KEY_LEFT:
-        index = (index - 1 + (int)dungeon->vnpcv.size())
-        % (int)dungeon->vnpcv.size();
-        selectNPC(dungeon->vnpcv[index]);
+        index = (index - 1 + (int)itemsInRoom.size())
+        % (int)itemsInRoom.size();
+        selectItem(itemsInRoom[index]);
         break;
       default:
         break;
@@ -1099,7 +1164,7 @@ int UI::selectTargetMonsters()
         quit = true;
         break;
       case ' ':
-        iListSelectForDescription(index);
+        mListSelectForDescription(index);
         return index;
       case KEY_DOWN:
       case KEY_RIGHT:
@@ -1140,14 +1205,12 @@ int UI::selectItem(Item* i)
   
   int x, y;
   
-
-  //npc->getLocation(&x, &y);
+  i->getLocation(&x, &y);
+  if (x < 0 | y < 0)
+    return -1;
   
   mvprintw(y+1, x-1, "[");
   mvprintw(y+1, x+1, "]");
-  
- // printMonsterHP(npc);
-  
   refresh();
   
   return 0;
