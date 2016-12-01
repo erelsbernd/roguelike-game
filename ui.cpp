@@ -1070,7 +1070,7 @@ int UI::selectTargetItems(vector<Item *>  &itemsInRoom)
   int index = 0;
   int roomIndex = 0;
   
-  int i = 0;
+  unsigned int i = 0;
   
   //mvprintw(18, 2, "entering for loop to get the room pc is in");
   //getch();
@@ -1206,7 +1206,7 @@ int UI::selectItem(Item* i)
   int x, y;
   
   i->getLocation(&x, &y);
-  if (x < 0 | y < 0)
+  if ((x < 0) | (y < 0))
     return -1;
   
   mvprintw(y+1, x-1, "[");

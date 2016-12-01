@@ -1,0 +1,86 @@
+===============
+     DEBUG     
+===============
+
+seed: 1480555081
+save path: (null)
+load path: (null)
+
+generating new dungeon...
+
+error parsing COLOR BLACK RED MAGENTA
+error parsing COLOR RED MAGENTA
+error parsing COLOR GREEN BLUE
+error parsing COLOR GREEN WHITE CYAN MAGENTA RED YELLOW BLUE
+generating monsters...
+
+place NPC C
+place NPC p
+place NPC z
+place NPC p
+place NPC z
+place NPC C
+place NPC C
+place NPC p
+place NPC z
+place NPC C
+
+monsters generated.
+
+generating objects...
+
+place item \
+place item }
+place item (
+place item )
+place item ]
+place item }
+place item _
+place item _
+place item =
+place item [
+
+objects generated.
+
+move @ to (52, 3)
+
+move @ to (51, 3)
+
+move @ to (50, 3)
+
+move @ to (49, 3)
+
+move @ to (48, 3)
+
+move @ to (47, 3)
+
+move @ to (46, 3)
+
+move @ to (46, 4)
+
+move @ to (46, 3)
+
+move @ to (46, 2)
+
+move @ to (46, 1)
+
+move @ to (47, 1)
+
+move @ to (48, 1)
+
+move @ to (48, 2)
+
+move @ to (48, 3)
+
+move @ to (47, 3)
+
+move @ to (46, 3)
+
+move @ to (46, 2)
+
+move @ to (45, 2)
+
+move @ to (45, 2)
+
+move @ to (45, 2)
+
